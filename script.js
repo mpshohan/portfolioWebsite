@@ -1,5 +1,25 @@
-const header = document.querySelector("header");
 
+const links = document.querySelectorAll('.navlist a');
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', ()=> {
+    const currentPosition = window.scrollY + window.innerHeight;
+
+    sections.forEach(section => {
+        if(currentPosition >= section.offsetTop + section.offsetHeight){
+            links.forEach(link => {
+                link.classList.remove('active');
+                if(section.getAttribute('id')===
+                link.getAttribute('href').substring(1)){
+                    link.classList.add('active');
+                }
+            } )
+        }
+    })
+})
+
+
+
+const header = document.querySelector("header");
 window.addEventListener("scroll", function(){
     header.classList.toggle("sticky", this.window.scrollY>100);
 });
